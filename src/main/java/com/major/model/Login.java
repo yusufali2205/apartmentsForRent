@@ -1,5 +1,8 @@
 package com.major.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Login {
 	private long phoneNo;
 	private String email;
