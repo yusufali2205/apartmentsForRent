@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class Property {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String propertyID;
+	private long id;
 	
 	@Column(nullable=false)
 	private String propertyName;
@@ -30,10 +30,10 @@ public class Property {
 	
 	@Column(nullable=false)
 	private int bhk;
-	
+	/*
 	@Column(nullable=false)
 	private User postedBy;
-	
+	*/
 	private long geoLat;
 	private long geoLong;
 	private String pictureLink;
@@ -49,11 +49,11 @@ public class Property {
 	
 	protected Property(){}
 	
-	public String getPropertyID() {
-		return propertyID;
+	public long getId() {
+		return id;
 	}
-	public void setPropertyID(String propertyID) {
-		this.propertyID = propertyID;
+	public void setId(long id) {
+		this.id = id;
 	}
 	public String getPropertyName() {
 		return propertyName;
@@ -91,12 +91,12 @@ public class Property {
 	public void setBhk(int bhk) {
 		this.bhk = bhk;
 	}
-	public User getPostedBy() {
+	/*public User getPostedBy() {
 		return postedBy;
 	}
 	public void setPostedBy(User postedBy) {
 		this.postedBy = postedBy;
-	}
+	}*/
 	public long getGeoLat() {
 		return geoLat;
 	}

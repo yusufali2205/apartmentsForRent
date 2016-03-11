@@ -2,6 +2,8 @@ package com.major.model;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+
 public class Preferences {
 	private String userID;
 	private String city;

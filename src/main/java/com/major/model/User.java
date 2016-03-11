@@ -10,7 +10,7 @@ import javax.persistence.Id;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String userID;
+	private long id;
 	
 	@Column(nullable=false)
 	private String firstName;
@@ -63,11 +63,11 @@ public class User {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public String getUserID() {
-		return userID;
+	public long getId() {
+		return id;
 	}
-	public void setUserID(String userID) {
-		this.userID = userID;
+	public void setId(long id) {
+		this.id = id;
 	}
 	public String getUserType() {
 		return userType;
