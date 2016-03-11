@@ -4,3 +4,4 @@
 .project
 .classpath
 .mvn
+src/main/resources/static/
