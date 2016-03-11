@@ -1,13 +1,37 @@
 package com.major.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class User {
-	private String firstName;
-	private String lastName;
-	private String email;
-	private long phoneNo;
-	private String city;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String userID;
+	
+	@Column(nullable=false)
+	private String firstName;
+	
+	private String lastName;
+	
+	/* email id cannot be null and cannot repeat */
+	@Column(unique=true, nullable=false)
+	private String email;
+	
+	/* phone number cannot be null and cannot repeat */
+	@Column(unique=true, nullable=false)
+	private long phoneNo;
+	
+	private String city;
+	
+	/* Client / Administrator */
+	@Column(nullable=false)
 	private String userType;
+	
+	protected User(){}
 	
 	public String getFirstName() {
 		return firstName;

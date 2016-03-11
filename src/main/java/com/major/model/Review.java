@@ -1,10 +1,26 @@
 package com.major.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class Review {
+	@Column(nullable=false)
 	private String propertyId;
+	
+	/* user who posted the review/rating */
+	@Column(nullable=false)
 	private String userId;
+	
+	/* There can be an entry with only rating but review null */
 	private String review;
+	
+	/* integer rating between 1 to 5 */
+	@Column(nullable=false)
 	private int rating;
+	
+	protected Review(){}
+	
 	public String getPropertyId() {
 		return propertyId;
 	}

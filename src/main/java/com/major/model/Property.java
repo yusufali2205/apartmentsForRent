@@ -1,27 +1,51 @@
 package com.major.model;
 
 import java.sql.Date;
-import java.util.ArrayList;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 public class Property {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String propertyID;
+	
+	@Column(nullable=false)
 	private String propertyName;
+	
+	@Column(nullable=false)
 	private String type;
+	
+	@Column(nullable=false)
 	private int price;
+	
 	private int floorArea;
+	
+	@Column(nullable=false)
 	private Date availableFrom;
+	
+	@Column(nullable=false)
 	private int bhk;
+	
+	@Column(nullable=false)
 	private User postedBy;
+	
 	private long geoLat;
 	private long geoLong;
 	private String pictureLink;
 	private boolean furnished;
-	private String address;
-	private boolean approved;
-	private Date postedOn;
-	private long rating;
-	private ArrayList<Review> reveiws;
 	
+	@Column(nullable=false)
+	private String address;
+	
+	private boolean approved;
+	
+	@Column(nullable=false)
+	private Date postedOn;
+	
+
 	public String getPropertyID() {
 		return propertyID;
 	}
@@ -112,16 +136,5 @@ public class Property {
 	public void setPostedOn(Date postedOn) {
 		this.postedOn = postedOn;
 	}
-	public long getRating() {
-		return rating;
-	}
-	public void setRating(long rating) {
-		this.rating = rating;
-	}
-	public ArrayList<Review> getReveiws() {
-		return reveiws;
-	}
-	public void setReveiws(ArrayList<Review> reveiws) {
-		this.reveiws = reveiws;
-	}
+	
 }
