@@ -3,10 +3,12 @@ package com.major.model;
 import java.sql.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class Property {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,7 +47,8 @@ public class Property {
 	@Column(nullable=false)
 	private Date postedOn;
 	
-
+	protected Property(){}
+	
 	public String getPropertyID() {
 		return propertyID;
 	}
