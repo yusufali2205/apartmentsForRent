@@ -9,26 +9,29 @@ import javax.persistence.Id;
 @Entity
 public class User {
 	@Id
+	@Column(name="USER_ID", nullable=false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long userId;
 	
-	@Column(nullable=false)
+	@Column(name="FIRST_NAME", nullable=false)
 	private String firstName;
 	
+	@Column(name="LAST_NAME")
 	private String lastName;
 	
 	/* email id cannot be null and cannot repeat */
-	@Column(unique=true, nullable=false)
+	@Column(name="EMAIL", unique=true, nullable=false)
 	private String email;
 	
 	/* phone number cannot be null and cannot repeat */
-	@Column(unique=true, nullable=false)
+	@Column(name="PHONE_NO", unique=true, nullable=false)
 	private long phoneNo;
 	
+	@Column(name="CITY")
 	private String city;
 	
 	/* Client / Administrator */
-	@Column(nullable=false)
+	@Column(name="USER_TYPE", nullable=false)
 	private String userType;
 	
 	protected User(){}
@@ -63,11 +66,11 @@ public class User {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public long getId() {
-		return id;
+	public long getUserId() {
+		return userId;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 	public String getUserType() {
 		return userType;

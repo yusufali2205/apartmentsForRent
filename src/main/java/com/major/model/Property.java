@@ -7,53 +7,69 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Property {
 	@Id
+	@Column(name="PROPERTY_ID", nullable=false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long propertyId;
 	
-	@Column(nullable=false)
+	@Column(name="PROPERTY_NAME", nullable=false)
 	private String propertyName;
 	
-	@Column(nullable=false)
+	@Column(name="TYPE", nullable=false)
 	private String type;
 	
-	@Column(nullable=false)
+	@Column(name="PRICE", nullable=false)
 	private int price;
 	
+	@Column(name="FLOOR_AREA")
 	private int floorArea;
 	
-	@Column(nullable=false)
+	@Column(name="AVAILABLE_FROM", nullable=false)
 	private Date availableFrom;
 	
-	@Column(nullable=false)
+	@Column(name="BHK", nullable=false)
 	private int bhk;
-	/*
-	@Column(nullable=false)
-	private User postedBy;
-	*/
+	
+	@Column(name="USER_ID", nullable=false, insertable=false, updatable=false)
+	private long userId;
+	
+	@ManyToOne(optional=false)
+    @JoinColumn(name="USER_ID",referencedColumnName="USER_ID")
+	private User postedByUser;
+	
+	@Column(name="GEO_LAT")
 	private long geoLat;
+	
+	@Column(name="GEO_LONG")
 	private long geoLong;
+	
+	@Column(name="PICTURE_LINK")
 	private String pictureLink;
+	
+	@Column(name="FURNISHED")
 	private boolean furnished;
 	
-	@Column(nullable=false)
+	@Column(name="ADDRESS", nullable=false)
 	private String address;
 	
+	@Column(name="APPROVED")
 	private boolean approved;
 	
-	@Column(nullable=false)
+	@Column(name="POSTED_ON", nullable=false)
 	private Date postedOn;
 	
 	protected Property(){}
 	
-	public long getId() {
-		return id;
+	public long getPropertyId() {
+		return propertyId;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setPropertyId(long propertyId) {
+		this.propertyId = propertyId;
 	}
 	public String getPropertyName() {
 		return propertyName;
@@ -91,12 +107,6 @@ public class Property {
 	public void setBhk(int bhk) {
 		this.bhk = bhk;
 	}
-	/*public User getPostedBy() {
-		return postedBy;
-	}
-	public void setPostedBy(User postedBy) {
-		this.postedBy = postedBy;
-	}*/
 	public long getGeoLat() {
 		return geoLat;
 	}
@@ -139,5 +149,19 @@ public class Property {
 	public void setPostedOn(Date postedOn) {
 		this.postedOn = postedOn;
 	}
-	
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+
+	public User getPostedByUser() {
+		return postedByUser;
+	}
+
+	public void setPostedByUser(User postedByUser) {
+		this.postedByUser = postedByUser;
+	}
 }

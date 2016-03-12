@@ -5,39 +5,57 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Review {
 	@Id
+	@Column(name="REVIEW_ID", nullable=false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long reviewId;
 	
-	@Column(nullable=false)
-	private String propertyId;
+	@Column(name="PROPERTY_ID", nullable=false, insertable=false, updatable=false)
+	private long propertyId;
 	
 	/* user who posted the review/rating */
-	@Column(nullable=false)
-	private String userId;
+	@Column(name="USER_ID", nullable=false, insertable=false, updatable=false)
+	private long userId;
 	
 	/* There can be an entry with only rating but review null */
+	@Column(name="REVIEW")
 	private String review;
 	
 	/* integer rating between 1 to 5 */
-	@Column(nullable=false)
+	@Column(name="RATING", nullable=false)
 	private int rating;
+	
+	@ManyToOne(optional=false)
+    @JoinColumn(name="USER_ID",referencedColumnName="USER_ID")
+    private User postedByUser;
+	
+	@ManyToOne(optional=false)
+    @JoinColumn(name="PROPERTY_ID",referencedColumnName="PROPERTY_ID")
+    private Property property;
 	
 	protected Review(){}
 	
-	public String getPropertyId() {
+	public long getReviewId() {
+		return reviewId;
+	}
+	public void setReviewId(long reviewId) {
+		this.reviewId = reviewId;
+	}
+	public long getPropertyId() {
 		return propertyId;
 	}
-	public void setPropertyId(String propertyId) {
+	public void setPropertyId(long propertyId) {
 		this.propertyId = propertyId;
 	}
-	public String getUserId() {
+	public long getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 	public String getReview() {
@@ -52,5 +70,17 @@ public class Review {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
-	
+	public User getPostedByUser() {
+		return postedByUser;
+	}
+	public void setPostedByUser(User postedByUser) {
+		this.postedByUser = postedByUser;
+	}
+	public Property getProperty() {
+		return property;
+	}
+	public void setProperty(Property property) {
+		this.property = property;
+	}
+
 }
