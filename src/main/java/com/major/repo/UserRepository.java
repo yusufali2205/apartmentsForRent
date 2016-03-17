@@ -12,5 +12,11 @@ import com.major.model.User;
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
 	List<User> findByLastName(@Param("name") String name);
+	
+	User findByUserId(@Param("userId") long userId);
+	
+	User findByEmail(@Param("email") String email);
+	
+	User save(User user);
 
 }
