@@ -1,6 +1,5 @@
 package com.major.repo;
 
-import java.util.List;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
@@ -11,6 +10,7 @@ import com.major.model.User;
 @RepositoryRestResource(collectionResourceRel = "users", path = "users")
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
-	List<User> findByLastName(@Param("name") String name);
-
+	User findByEmail(@Param("email") String email);
+	User findByPhoneNo(@Param("phoneNo") long phoneNo);
+	User findByUserId(@Param("userId") long userId);
 }
