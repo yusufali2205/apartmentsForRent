@@ -15,11 +15,11 @@ public class Review {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long reviewId;
 	
-	@Column(name="PROPERTY_ID", nullable=false, insertable=false, updatable=false)
+	@Column(name="PROPERTY_ID", nullable=false)
 	private long propertyId;
 	
 	/* user who posted the review/rating */
-	@Column(name="USER_ID", nullable=false, insertable=false, updatable=false)
+	@Column(name="USER_ID", nullable=false)
 	private long userId;
 	
 	/* There can be an entry with only rating but review null */
@@ -31,11 +31,11 @@ public class Review {
 	private int rating;
 	
 	@ManyToOne(optional=false)
-    @JoinColumn(name="USER_ID",referencedColumnName="USER_ID")
+    @JoinColumn(name="USER_ID",referencedColumnName="USER_ID", insertable=false, updatable=false)
     private User postedByUser;
 	
 	@ManyToOne(optional=false)
-    @JoinColumn(name="PROPERTY_ID",referencedColumnName="PROPERTY_ID")
+    @JoinColumn(name="PROPERTY_ID",referencedColumnName="PROPERTY_ID", insertable=false, updatable=false)
     private Property property;
 	
 	protected Review(){}

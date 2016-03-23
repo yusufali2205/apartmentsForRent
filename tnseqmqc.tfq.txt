@@ -1,0 +1,25 @@
+﻿Merge remote-tracking branch 'origin/login'
+
+# Conflicts:
+#	src/main/java/com/major/repo/UserRepository.java
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	new file:   src/main/java/com/major/WebMvcConfiguration.java
+#	modified:   src/main/java/com/major/model/User.java
+#	modified:   src/main/java/com/major/repo/UserRepository.java
+#	new file:   src/main/java/com/major/service/AppUserDetailsService.java
+#
+

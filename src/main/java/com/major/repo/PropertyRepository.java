@@ -22,15 +22,15 @@ public interface PropertyRepository extends PagingAndSortingRepository<Property,
 	List<Property> findByAvailableFromGreaterThan(@Param("availableFrom") Date availableFrom);
 	List<Property> findByBhk(@Param("Bhk") int bhk);
 
-	@Query("select * from Property p where p.address like %?1%")
+	@Query("select p from Property p where p.address like %:address%")
 	List<Property> findByAddress(@Param("address") String address);
 	
 	/* Search by all criteria */
-	@Query("select * from Property p where LOWER(p.propertyName) like LOWER(%?1%) "
-			+ "AND price between ?2 and ?3 AND availableFrom > ?4 AND bhk = ?5 "
-			+ "AND type = ?6")
-	List<Property> findByAll(@Param("propertyName") String propertyName, 
+	/*@Query("select p from Property p where LOWER(p.propertyName) like LOWER(%:propertyName%) "
+			+ "AND price between :min and :max AND availableFrom >= :availableFrom AND bhk = :bhk "
+			+ "AND type = :type")*/
+	List<Property> findByPropertyNameAndPriceBetweenAndAvailableFromGreaterThanEqualAndBhkAndType(@Param("propertyName") String propertyName, 
 			@Param("min") int min, @Param("max") int max, 
-			@Param("availableFrom") Date availableFrom, @Param("Bhk") int bhk,
+			@Param("availableFrom") Date availableFrom, @Param("bhk") int bhk,
 			@Param("type") String type);
 }

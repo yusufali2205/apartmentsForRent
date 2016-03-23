@@ -35,11 +35,11 @@ public class Property {
 	@Column(name="BHK", nullable=false)
 	private int bhk;
 	
-	@Column(name="USER_ID", nullable=false, insertable=false, updatable=false)
+	@Column(name="USER_ID", nullable=false)
 	private long userId;
 	
 	@ManyToOne(optional=false)
-    @JoinColumn(name="USER_ID",referencedColumnName="USER_ID")
+    @JoinColumn(name="USER_ID",referencedColumnName="USER_ID", insertable=false, updatable=false)
 	private User postedByUser;
 	
 	@Column(name="GEO_LAT")
