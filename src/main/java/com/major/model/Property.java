@@ -1,6 +1,7 @@
 package com.major.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Property {
@@ -41,6 +43,10 @@ public class Property {
 	@ManyToOne(optional=false)
     @JoinColumn(name="USER_ID",referencedColumnName="USER_ID", insertable=false, updatable=false)
 	private User postedByUser;
+	
+	@OneToMany
+    @JoinColumn(name="PROPERTY_ID",referencedColumnName="PROPERTY_ID", insertable=false, updatable=false)
+	private List<Review> reviewsList;
 	
 	@Column(name="GEO_LAT")
 	private long geoLat;
