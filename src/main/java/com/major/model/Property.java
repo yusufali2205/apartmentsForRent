@@ -49,10 +49,10 @@ public class Property {
 	private List<Review> reviewsList;
 	
 	@Column(name="GEO_LAT")
-	private long geoLat;
+	private String geoLat;
 	
 	@Column(name="GEO_LONG")
-	private long geoLong;
+	private String geoLong;
 	
 	@Column(name="PICTURE_LINK")
 	private String pictureLink;
@@ -68,6 +68,9 @@ public class Property {
 	
 	@Column(name="POSTED_ON", nullable=false)
 	private Date postedOn;
+	
+	@Column(name="PLACE_ID", nullable=false)
+	private String placeId;
 	
 	protected Property(){}
 	
@@ -113,16 +116,16 @@ public class Property {
 	public void setBhk(int bhk) {
 		this.bhk = bhk;
 	}
-	public long getGeoLat() {
+	public String getGeoLat() {
 		return geoLat;
 	}
-	public void setGeoLat(long geoLat) {
+	public void setGeoLat(String geoLat) {
 		this.geoLat = geoLat;
 	}
-	public long getGeoLong() {
+	public String getGeoLong() {
 		return geoLong;
 	}
-	public void setGeoLong(long geoLong) {
+	public void setGeoLong(String geoLong) {
 		this.geoLong = geoLong;
 	}
 	public String getPictureLink() {
@@ -170,4 +173,13 @@ public class Property {
 	public void setPostedByUser(User postedByUser) {
 		this.postedByUser = postedByUser;
 	}
+
+	public String getPlaceId() {
+		return placeId;
+	}
+
+	public void setPlaceId(String placeId) {
+		this.placeId = placeId;
+	}
+	
 }

@@ -55,4 +55,9 @@ public interface PropertyRepository extends PagingAndSortingRepository<Property,
 	@Query("select AVG(r.rating) from Property p, Review r where p.propertyId = r.propertyId "
 			+ "and p.propertyId = :propertyId group by r.propertyId")
 	long getAverageRating(@Param("propertyId") long propertyId);
+	
+	@Query("select COUNT(p) from Property p where p.placeId = :placeId")
+	int checkPropertyByPlaceId(@Param("placeId") String placeId);
+	
+	
 }
