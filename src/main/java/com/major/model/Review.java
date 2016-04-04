@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 public class Review {
 	@Id
@@ -38,7 +41,8 @@ public class Review {
 	
 	@ManyToOne(optional=false)
     @JoinColumn(name="PROPERTY_ID",referencedColumnName="PROPERTY_ID", insertable=false, updatable=false)
-    private Property property;
+	@Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+	private Property property;
 	
 	protected Review(){}
 	

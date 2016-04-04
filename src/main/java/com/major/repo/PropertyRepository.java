@@ -18,6 +18,7 @@ public interface PropertyRepository extends PagingAndSortingRepository<Property,
 	/* REST call to search by property type would look like
 	 * http://localhost:8080/property/search/findByType?type=apt
 	 */
+	List<Property> findByUserId(@Param("userId") long userId);
 	List<Property> findByType(@Param("type") String type);
 	List<Property> findByPropertyNameAllIgnoreCase(@Param("propertyName") String propertyName);
 	List<Property> findByPriceBetween(@Param("min") int min, @Param("max") int max);
@@ -60,6 +61,10 @@ public interface PropertyRepository extends PagingAndSortingRepository<Property,
 			+ "and p.propertyId = :propertyId")
 	List<Review> getReviewsByPropertyId(@Param("propertyId") long propertyId);
 
+	@Query("select r from Property p, Review r where p.propertyId = r.propertyId "
+			+ "and p.propertyId = :propertyId and r.userId = :userId")
+	List<Review> getReviewsByPropertyIdAndUserId(@Param("propertyId") long propertyId, @Param("userId") long userId);
+	
 	@Query("select AVG(r.rating) from Property p, Review r where p.propertyId = r.propertyId "
 			+ "and p.propertyId = :propertyId group by r.propertyId")
 	long getAverageRating(@Param("propertyId") long propertyId);

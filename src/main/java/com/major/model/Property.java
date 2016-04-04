@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 public class Property {
 	@Id
@@ -46,6 +49,7 @@ public class Property {
 	
 	@OneToMany
     @JoinColumn(name="PROPERTY_ID",referencedColumnName="PROPERTY_ID", insertable=false, updatable=false)
+	@Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
 	private List<Review> reviewsList;
 	
 	@Column(name="GEO_LAT")
