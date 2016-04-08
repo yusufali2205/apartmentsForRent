@@ -27,10 +27,15 @@ public class TokenFilter implements Filter {
     HttpServletResponse resp = (HttpServletResponse)response;
 
     String clientToken = req.getHeader("X-CLIENT-TOKEN");
-    
-    if(clientToken == secret) chain.doFilter(request, response);
-    
-    resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);;
+    System.out.println(clientToken);
+    if(secret.equals(clientToken) || req.getMethod().equalsIgnoreCase("OPTIONS")) {
+    	System.out.println(req.getMethod());
+    	System.out.println("in if");
+    	chain.doFilter(request, response);
+    } else{
+    	System.out.println("out");
+        resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+    }
   }
 
   @Override
